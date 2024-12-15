@@ -74,19 +74,52 @@ split
     {
         return settings["Level One"];
     }
-    if (current.level == 2 && old.level == 1) return settings["Level Two"];
-    if (current.level == 3 && old.level == 2) return settings["Level Three"];
-    if (current.level == 4 && old.level == 3) return settings["Level Four"];
-    if (current.level == 5 && old.level == 4) return settings["Level Five"];
-    if (current.level == 6 && old.level == 5) return settings["Normal Ending"];
+    if (current.level == 2 && old.level == 1) 
+    {
+        return settings["Level Two"];
+    }
+    if (current.level == 3 && old.level == 2) 
+    {
+        return settings["Level Three"];
+    }
+    if (current.level == 4 && old.level == 3) 
+    {
+        return settings["Level Four"];
+    }
+    if (current.level == 5 && old.level == 4) 
+    {
+        return settings["Level Five"];
+    }
+    if (current.level == 6 && old.level == 5) 
+    {
+        return settings["Normal Ending"];
+    }
 
     // Lost Footage Level Splits
-    if (current.level == 11 && old.MainMenu != 3276) return settings["Lost Footage Level 1"];
-    if (current.level == 12 && old.level == 11) return settings["Lost Footage Level 2"];
-    if (current.level == 13 && old.level == 12) return settings["Lost Footage Level 3"];
-    if (current.level == 14 && old.level == 13) return settings["Lost Footage Level 4"];
-    if (current.level == 15 && old.level == 14) return settings["Lost Footage Level 5"];
-    if (current.level == 16 && old.level == 15) return settings["Lost Footage Ending"];
+    if (current.level == 11 && old.MainMenu != 3276) 
+    {
+        return settings["Lost Footage Level 1"];
+    }
+    if (current.level == 12 && old.level == 11) 
+    {
+        return settings["Lost Footage Level 2"];
+    }
+    if (current.level == 13 && old.level == 12) 
+    {
+        return settings["Lost Footage Level 3"];
+    }
+    if (current.level == 14 && old.level == 13) 
+    {
+        return settings["Lost Footage Level 4"];
+    }
+    if (current.level == 15 && old.level == 14) 
+    {
+        return settings["Lost Footage Level 5"];
+    }
+    if (current.level == 16 && old.level == 15) 
+    {
+        return settings["Lost Footage Ending"];
+    }
 }
 
 exit
