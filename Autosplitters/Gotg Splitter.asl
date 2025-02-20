@@ -5,7 +5,7 @@
 
 state("gotg")
 {
- int Chaptercount: 0x3DEE0B4; // The Current Chapter You Are In
+ int Chaptercount: 0x3DEE0B4; // Your Current Chapter
  int loading: 0x3DEDDDC; // 0 When Not Loading, 1 When Loading
 }
 
