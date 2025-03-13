@@ -7,6 +7,7 @@ startup
     vars.Helper.LoadSceneManager = true;
     
     settings.Add("Starsliver", false, "Split When Picking Up A Starsliver");
+    settings.Add("island", false, "Split When Entering The Island");
 }
 
 init
@@ -14,7 +15,7 @@ init
     vars.Helper.TryLoad = (Func<dynamic, bool>)(mono =>
     {
         vars.Helper["Starshard"] = mono.Make<int>("GameManager", "instance", "Starshard_Amount");
-        vars.Helper["Credits"] = mono.Make<bool>("GameManager", "hasBeatenGame");
+        vars.Helper["World"] =  mono.Make<int>("GameManager", "worldLocation");
         vars.Helper["Starsliver"] = mono.Make<int>("GameManager", "instance", "Starsliver_Amount");
         vars.Helper["Paused"] = mono.Make<bool>("GameManager", "isPaused");
         return true;
@@ -23,7 +24,7 @@ init
     current.Scene = "";
     current.Starshard = 0;
     current.Starsliver = 0;
-    current.Credits = false;
+    current.World = "";
 }
 
 update
@@ -38,14 +39,14 @@ update
     if (old.Starshard != current.Starshard)
         vars.Log("Starshard Changed: " + current.Starshard);
 
-    if (old.Credits != current.Credits)
-        vars.Log("Credits Changed: " + current.Credits);
-
     if (old.Starsliver != current.Starsliver)
         vars.Log("Starsliver Changed: " + current.Starsliver);
 
     if (old.Paused != current.Paused)
         vars.Log("Paused Changed: " + current.Paused);
+
+    if (old.World != current.World)
+        vars.Log("World Location: " + current.World);
 }
 
 split
@@ -56,6 +57,10 @@ split
 
     if (current.Starsliver > old.Starsliver) {
         return settings["Starsliver"];
+    }
+
+    if (current.World == 1 && old.World != 1) {
+        return settings["island"];
     }
 }
 
