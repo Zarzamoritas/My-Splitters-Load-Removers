@@ -1,4 +1,4 @@
-state("BushsideRangers-Win64-Shipping")
+state("BushsideRangers-Win64-Shipping") // This Is A Temporary LRT for the runners while I work on the full autosplitter.
 {
      int paused: 0x59EC9B4;
      bool loads: 0x5635EF9;
