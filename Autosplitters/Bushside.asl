@@ -1,5 +1,5 @@
 // Credits
-// Nikoheart - Sigscans 
+// Nikoheart - Sigscans & Helpers & Starting Block
 // Arkhamfan69 - Creating The Splitter
 
 state("BushsideRangers-Win64-Shipping") {}
@@ -22,16 +22,16 @@ startup
 
    	dynamic[,] _settings =
 	{
-		{ "Area", true, "Splitting Areas", null },
-			{ "1_intro_entrance", false, "Split When Entering The Nature Hub", "Area" },
-			{ "1_entrancePRoom", true, "Split When Entering The Utilidors", "Area" },
-			{ "1_cableCarEntrance", false, "Split When Entering The First Autoscroller", "Area" },
-            { "1_cableCarSect2", true, "Split When Entering Simons Sector", "Area" },
-            { "1_CableCarFinal", false, "Split When Entering The 2nd Autoscroller", "Area" },
-            { "1_giftShopSect", true, "Split When Entering The Gift Shop", "Area" },
-            { "1_finalChase", true, "Split When Entering The Final Chapter", "Area" },
+	  { "Area", true, "Splitting Areas", null },
+		{ "1_intro_entrance", false, "Split When Entering The Nature Hub", "Area" },
+		{ "1_cableCarSectEntrance", true, "Split When Entering The Utilidors", "Area" },
+		{ "1_cableCarSect2", false, "Split When Entering The First Autoscroller", "Area" },
+            	{ "1_cableCarSectDevice", true, "Split When Entering Simons Sector", "Area" },
+            	{ "1_cableCarFinal", false, "Split When Entering The 2nd Autoscroller", "Area" },
+            	{ "1_giftShopSect", true, "Split When Entering The Gift Shop", "Area" },
+            	{ "1_finalChase", true, "Split When Entering The Final Chapter", "Area" },
     };
-	vars.Helper.Settings.Create(_settings);
+    vars.Helper.Settings.Create(_settings);
 }
 
 init
