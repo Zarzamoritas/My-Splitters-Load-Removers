@@ -91,7 +91,7 @@ update
     if (old.Paused != current.Paused) vars.Log("Current Paused Is " + current.Paused);
     if (old.Cinematic != current.Cinematic) vars.Log("Cinematic: " + current.Cinematic);
     // if (old.Collectables != current.Collectables) vars.Log("Collectables: " + current.Collectables);
-    if (current.Area == "1_finalChase" && old.Cinematic != current.Cinematic && current.Cinematic == true) vars.FinalLevelCutscene++;
+    // if (current.Area == "1_finalChase" && old.Cinematic != current.Cinematic && current.Cinematic == true) vars.FinalLevelCutscene++;
 }
 
 start
