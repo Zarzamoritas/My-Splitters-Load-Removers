@@ -89,7 +89,7 @@ update
     if (!string.IsNullOrEmpty(world) && world != "None") current.Area = world;
     if (old.Area != current.Area) vars.Log("Area: " + current.Area);
     if (old.Paused != current.Paused) vars.Log("Current Paused Is " + current.Paused);
-    if (old.Cinematic != current.Cinematic) vars.Log("Cinematic: " + current.Cinematic);
+    // if (old.Cinematic != current.Cinematic) vars.Log("Cinematic: " + current.Cinematic);
     // if (old.Collectables != current.Collectables) vars.Log("Collectables: " + current.Collectables);
     // if (current.Area == "1_finalChase" && old.Cinematic != current.Cinematic && current.Cinematic == true) vars.FinalLevelCutscene++;
 }
