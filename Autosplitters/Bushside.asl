@@ -29,7 +29,7 @@ startup
             	{ "1_cableCarSectDevice", true, "Split When Entering Simons Sector", "Area" },
             	{ "1_cableCarFinal", false, "Split When Entering The 2nd Autoscroller", "Area" },
             	{ "1_giftShopSect", true, "Split When Entering The Gift Shop", "Area" },
-            	{ "1_finalChase", true, "Split When Entering The Final Chapter", "Area" },
+            	{ "1_finalChase", true, "Split When Entering The Final Chase", "Area" },
     };
     vars.Helper.Settings.Create(_settings);
 }
