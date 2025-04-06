@@ -2,7 +2,10 @@
 // Nikoheart - Sigscans & Helpers & Starting Block
 // Arkhamfan69 - Creating The Splitter
 
-state("BushsideRangers-Win64-Shipping") {}
+state("BushsideRangers-Win64-Shipping") 
+{
+    bool HiddenLoads: 0x5635EF9;
+}
 
 startup
 {
@@ -22,16 +25,16 @@ startup
 
    	dynamic[,] _settings =
 	{
-	  { "Area", true, "Splitting Areas", null },
-		{ "1_intro_entrance", false, "Split When Entering The Nature Hub", "Area" },
-		{ "1_cableCarSectEntrance", true, "Split When Entering The Utilidors", "Area" },
-		{ "1_cableCarSect2", false, "Split When Entering The First Autoscroller", "Area" },
-            	{ "1_cableCarSectDevice", true, "Split When Entering Simons Sector", "Area" },
-            	{ "1_cableCarFinal", false, "Split When Entering The 2nd Autoscroller", "Area" },
-            	{ "1_giftShopSect", true, "Split When Entering The Gift Shop", "Area" },
-            	{ "1_finalChase", true, "Split When Entering The Final Chase", "Area" },
+		{ "Area", true, "Splitting Areas", null },
+			{ "1_intro_entrance", false, "Split When Entering The Nature Hub", "Area" },
+			{ "1_cableCarSectEntrance", true, "Split When Entering The Utilidors", "Area" },
+			{ "1_cableCarSect2", false, "Split When Entering The First Autoscroller", "Area" },
+            { "1_cableCarSectDevice", true, "Split When Entering Simons Sector", "Area" },
+            { "1_cableCarFinal", false, "Split When Entering The 2nd Autoscroller", "Area" },
+            { "1_giftShopSect", true, "Split When Entering The Gift Shop", "Area" },
+            { "1_finalChase", true, "Split When Entering The Final Chase", "Area" },
     };
-    vars.Helper.Settings.Create(_settings);
+	vars.Helper.Settings.Create(_settings);
 }
 
 init
@@ -52,6 +55,7 @@ init
     // GWorld.OwningGameInstance.LocalPlayers[0].Character.CharacterMovement.Velocity.X/Y/Z
     vars.Helper["CharacterMovementX"] = vars.Helper.Make<float>(gEngine, 0xD98, 0x38, 0x0, 0x30, 0x2C8, 0x300, 0xC8);
     vars.Helper["CharacterMovementY"] = vars.Helper.Make<float>(gEngine, 0xD98, 0x38, 0x0, 0x30, 0x2C8, 0x300, 0xD0);
+    // vars.Helper["Flashlight"] =  vars.Helper.Make<bool>(gEngine, 0x6BB, )  // This is a potential option to autoend the timer
     // GEngine.GameInstance.collectableList??
     // vars.Helper["Collectables"] = vars.Helper.Make<int>(gEngine, 0xD98, 0x278);
 
@@ -76,7 +80,6 @@ init
     });
 
     current.Area = "";
-    vars.FinalLevelCutscene = false;
     vars.CompletedSplits = new HashSet<string>();
 }
 
@@ -89,6 +92,7 @@ update
     if (!string.IsNullOrEmpty(world) && world != "None") current.Area = world;
     if (old.Area != current.Area) vars.Log("Area: " + current.Area);
     if (old.Paused != current.Paused) vars.Log("Current Paused Is " + current.Paused);
+    if (old.HiddenLoads != current.HiddenLoads) vars.Log("Hidden Loading = " + current.HiddenLoads);
     // if (old.Cinematic != current.Cinematic) vars.Log("Cinematic: " + current.Cinematic);
     // if (old.Collectables != current.Collectables) vars.Log("Collectables: " + current.Collectables);
     // if (current.Area == "1_finalChase" && old.Cinematic != current.Cinematic && current.Cinematic == true) vars.FinalLevelCutscene++;
@@ -101,7 +105,7 @@ start
 
 isLoading
 {
-    return current.Area == "loadingScreen_MAP" || current.Paused;
+    return current.Area == "loadingScreen_MAP" || current.Paused || current.HiddenLoads;
 }
 
 reset
@@ -111,9 +115,10 @@ reset
 
 split
 {
-    if (old.Area != current.Area && settings[current.Area] && !vars.CompletedSplits.Contains(current.Area))
+    if (current.Area != old.Area && settings[current.Area] && !vars.CompletedSplits.Contains(current.Area))
     {
         vars.CompletedSplits.Add(current.Area);
         return true;
     }
 }
+
