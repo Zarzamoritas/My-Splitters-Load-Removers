@@ -103,6 +103,11 @@ start
     return (current.CharacterMovementX > 0 || current.CharacterMovementY > 0); 
 }
 
+onStart
+{
+	vars.CompletedSplits.Clear();
+}
+
 isLoading
 {
     return current.Area == "loadingScreen_MAP" || current.Paused || current.HiddenLoads;
