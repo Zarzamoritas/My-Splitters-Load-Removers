@@ -4,7 +4,6 @@ startup
 {
     Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
     vars.Helper.GameName = "Urban Nightmare";
-    vars.Helper.AlertLoadless();
 }
 
 init
