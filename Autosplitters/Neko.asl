@@ -94,6 +94,11 @@ start
     return current.Map == "Intro_Main";
 }
 
+onStart
+{
+ vars.CompletedSplits.Clear();
+}
+
 reset
 {
      return current.Map == "MainMenu"; // This is there for the people who have the reset tab ticked
