@@ -48,6 +48,7 @@ startup
             	{ "PirateShip_L3", false, "Split When Entering 8-3", "Levels" },
             	{ "PirateShip_L4", false, "Split When Entering 8-4", "Levels" },
             	{ "PirateShip_L5", false, "Split When Entering 8-5", "Levels" },
+				{ "FarmBattle", false, "Split When Entering the Farm Battle mini-game", "Levels" },
     };
 	vars.Helper.Settings.Create(_settings);
     vars.CompletedSplits = new HashSet<string>();
@@ -91,7 +92,7 @@ init
 
 start
 {
-    return current.Map == "Intro_Main";
+    return current.Map == "Tutorial_L1";
 }
 
 onStart
@@ -115,7 +116,7 @@ split
 
 isLoading
 {
-    return current.Map == "TutorialLevelSelect" || current.Map == "HeavenLevelSelect" || current.Map == "WorldBiomeSelect" || current.Map == "SpaceLevelSelect" || current.Map == "PirateShipLevelSelect" || current.Map == "HellLevelSelect" || current.Map == "IceLevelSelect" || current.Map == "JungleLevelSelect" || current.Map == "DesertLevelSelect" || current.Map == "MainMenu";
+    return current.Map == "TutorialLevelSelect" || current.Map == "HeavenLevelSelect" || current.Map == "WorldBiomeSelect" || current.Map == "SpaceLevelSelect" || current.Map == "PirateShipLevelSelect" || current.Map == "HellLevelSelect" || current.Map == "IceLevelSelect" || current.Map == "JungleLevelSelect" || current.Map == "DesertLevelSelect" || current.Map == "MainMenu" || current.Map == "Village" || current.Map == "Farm" || current.Map == "Bank" || current.Map == "House" || current.Map == "Shop" || current.Map == "Intro_Main";
 }
 
 exit
